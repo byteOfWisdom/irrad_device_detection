@@ -95,6 +95,17 @@ def main():
 
     print(devices)
 
+    config = {
+        "daq": "Arduino-Readout-Board",
+        "ntc": "Arduino-NTC-Readout",
+        "zaber": "Zaber-Controller-X-MCC3"
+    }
+    
+    for device, port in devices:
+        if device == "other":
+            continue
+        print(f"symlinking {port} to {config[device]}")
+
     if len(argv) >= 2:
         print(f"writing udev rules to {argv[1]}")
         with open(argv[1], "w") as file:
