@@ -5,6 +5,7 @@ from serial.serialutil import SerialException
 from sys import argv
 from time import sleep
 import glob
+import os
 from zaber.serial import AsciiDevice, AsciiSerial
 
 ntc_read_cmd = "T:0\n" # reads temperature from channel 0. will be A number if it's an ntc arduino
@@ -100,19 +101,16 @@ def main():
         "ntc": "Arduino-NTC-Readout",
         "zaber": "Zaber-Controller-X-MCC3"
     }
-    
+
     for device in devices:
         if device == "other":
             continue
         if devices[device] == "":
             print(f"{device} not found")
             continue
-        print(f"symlinking {devices[device]} to {config[device]}")
-
-    if len(argv) >= 2:
-        print(f"writing udev rules to {argv[1]}")
-        with open(argv[1], "w") as file:
-            pass
+        if "link" in argv:
+            print(f"symlinking {devices[device]} to {config[device]}")
+            os.symlink(f"/dev/serial/by-id/{devices[device]}", f"/dev/{config[device]}")
 
 
 if __name__ == "__main__":
