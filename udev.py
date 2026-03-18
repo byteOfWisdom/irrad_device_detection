@@ -104,6 +104,9 @@ def main():
     for device in devices:
         if device == "other":
             continue
+        if devices[device] == "":
+            print(f"{device} not found")
+            continue
         print(f"symlinking {devices[device]} to {config[device]}")
 
     if len(argv) >= 2:
