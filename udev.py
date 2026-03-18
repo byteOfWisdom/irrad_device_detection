@@ -101,10 +101,10 @@ def main():
         "zaber": "Zaber-Controller-X-MCC3"
     }
     
-    for device, port in devices:
+    for device in devices:
         if device == "other":
             continue
-        print(f"symlinking {port} to {config[device]}")
+        print(f"symlinking {devices[device]} to {config[device]}")
 
     if len(argv) >= 2:
         print(f"writing udev rules to {argv[1]}")
