@@ -8,7 +8,7 @@ import glob
 import os
 from zaber.serial import AsciiDevice, AsciiSerial
 
-ntc_read_cmd = "T:0\n" # reads temperature from channel 0. will be A number if it's an ntc arduino
+ntc_read_cmd = "S\n" # reads temperature from channel 0. will be A number if it's an ntc arduino
 daq_read_cmd = "D\n" # reads loop delay. will also work on ntc arduino. so that one is filtered out first
 nan = float("nan")
 
