@@ -105,7 +105,7 @@ def main():
     for device in devices:
         if device == "other":
             continue
-        if devices[device] == "" and "shell" not in argv:
+        if devices[device] == "":
             print(f"{device} not found")
             continue
         if "link" in argv:
