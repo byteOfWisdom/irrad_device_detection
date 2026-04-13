@@ -111,6 +111,8 @@ def main():
         if "link" in argv:
             print(f"symlinking {devices[device]} to {config[device]}")
             os.symlink(f"/dev/serial/by-id/{devices[device]}", f"/dev/{config[device]}")
+        elif "shell" in argv:
+            print(f"ln -s /dev/serial/by-id/{devices[device]}" f"/dev/{config[device]}")
 
 
 if __name__ == "__main__":
