@@ -94,7 +94,7 @@ def main():
         #print(f"checking {port}")
         devices[categorize_port(port)] = port
 
-    print(devices)
+    # print(devices)
 
     config = {
         "daq": "Arduino-Readout-Board",
@@ -105,7 +105,7 @@ def main():
     for device in devices:
         if device == "other":
             continue
-        if devices[device] == "":
+        if devices[device] == "" and "shell" not in argv:
             print(f"{device} not found")
             continue
         if "link" in argv:
